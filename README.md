@@ -7,9 +7,6 @@
 - [Tech Stack](#tech-stack)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 Social Lens analyzes data from social media platforms and provides users with insights such as:
