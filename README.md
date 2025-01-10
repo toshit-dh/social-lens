@@ -28,6 +28,7 @@ Social Lens analyzes data from social media platforms and provides users with in
 - **Data Visualization**: Visualize engagement metrics and trends using interactive charts and graphs.
 - **Seamless Integration**: Integrate with popular social media platforms to fetch real-time data
 
+## UI
   ![Social Lens](image.png)
 
 
