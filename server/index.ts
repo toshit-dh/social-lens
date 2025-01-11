@@ -64,8 +64,7 @@ app.post("/put-posts", async (req: Request, res: Response) => {
 
 // for putting demo posts
 app.get("/analyse-posts", async (req: Request, res: Response) => {
-  const userId: string = req.query.userid as string;
-  const post_type: string = req.query.ptype as string;
+
   
   const response = await runAIWorkFlow(
     `
@@ -76,6 +75,9 @@ app.get("/analyse-posts", async (req: Request, res: Response) => {
     Comments: {comments}
     `
   );
+
+  console.log("here",response);
+  
 
   res.status(200).json({ response });
 });

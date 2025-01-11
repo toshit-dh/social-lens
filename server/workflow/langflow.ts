@@ -34,8 +34,6 @@ class LangflowClient {
         body: JSON.stringify(body),
       });
       const responseText = await response.text();
-      console.log(responseText);
-      
       const responseMessage = JSON.parse(responseText);
       console.log(responseMessage.outputs[0].outputs[0].results.message);
       
@@ -149,7 +147,6 @@ export async function runAIWorkFlow(
   outputType = "chat",
   stream = false
 ) {
-  console.log(inputValue);
   
   const flowIdOrName = "015b7848-8127-46db-be5c-efa98f6defaf";
   const langflowId = "6cc8e938-1c3e-4436-a6fe-b9c4a8e3c889";
@@ -175,14 +172,9 @@ export async function runAIWorkFlow(
       (message: any) => console.log("Stream Closed:", message), // onClose
       (error: any) => console.log("Stream Error:", error) // onError
     );
-    if (!stream && response && response.outputs) {
-      const flowOutputs = response.outputs[0];
-      const firstComponentOutputs = flowOutputs.outputs[0];
-      const output = firstComponentOutputs.outputs.message;
-
-      return output.message.text;
+      return response;
     }
-  } catch (error) {
+   catch (error) {
     console.error("Main Error", error.message);
   }
 }

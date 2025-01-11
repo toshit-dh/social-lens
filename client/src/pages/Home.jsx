@@ -106,21 +106,17 @@ export default function Home() {
     try {
       setLoadingState(true)
       const response = await fetch(
-        `http://localhost:5000/analyse-posts?userid=${userID}&ptype=image`
-      );
-
+        `http://localhost:5000/analyse-posts?userid=${userID}&ptype=image`,{
+          method: "GET"
+        }
+      );      
       const data = await response.json();
-      console.log(data);
       
       setLoadingState(false)
-      setText(data.response)
+      setText(data.response.text)
     } catch (e) {
       console.log(e);
       console.log("Error in analyzing the data");
-      setAnalyzedText({
-        isAnalyzing: false,
-        data: [],
-      });
     }
   };
 
@@ -228,17 +224,10 @@ export default function Home() {
               </h2>
               <div className="bg-gray-700 p-4 rounded-md text-white">
                 <p>
-                  {text.length > 6
-                    ? text
-                        .slice(3, -3)
-                        .split("Post")
-                        .map((line, index) => (
-                          <span key={index}>
-                            {index > 0 && <br />}
-                            {line}
-                          </span>
-                        ))
-                    : text}
+                  {
+                    text != "" &&
+                    text
+                  } 
                 </p>
               </div>
             </div>
@@ -251,6 +240,7 @@ export default function Home() {
                 setInputType("url");
                 setUrl("");
                 setPosts([]);
+                setText("")
                 setCsvFile(null);
                 setFetchedData(null);
               }}
